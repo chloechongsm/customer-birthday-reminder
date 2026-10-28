@@ -1,0 +1,17 @@
+{
+  "name": "Customer Birthday Reminder",
+  "short_name": "Birthdays",
+  "description": "Customer birthdays this week, reminded 3 days before, with English and Malay wishes and a card picture. Your customer list stays on your device.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F2F5F3",
+  "theme_color": "#1F5C4F",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
