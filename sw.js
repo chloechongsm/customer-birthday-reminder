@@ -1,7 +1,7 @@
 // Lets the installed app open without internet.
 // App files: online, always fetch the newest version (and keep a copy); offline, use the saved copy.
 // Libraries and fonts from the CDN never change, so a saved copy is used first.
-const CACHE = 'birthday-app-v1';
+const CACHE = 'birthday-app-v2';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-64.png'];
 const LIBS = [
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
@@ -12,7 +12,7 @@ const CDN_HOSTS = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstati
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(async c => {
     await c.addAll(FILES);
-    await Promise.all(LIBS.map(u => c.add(new Request(u, { mode: 'no-cors' })).catch(() => {})));
+    await Promise.all(LIBS.map(u => fetch(u, { mode: 'no-cors' }).then(res => c.put(u, res)).catch(() => {})));
   }).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
